@@ -4,7 +4,7 @@ import { Colors } from "../../constants/Colors";
 
 export default function CategoryItem({ category, onCategoryPress }) {
   return (
-    <TouchableOpacity onPress={() => onCategoryPress(category)}>
+    <TouchableOpacity onPress={() => onCategoryPress(category.name)}>
       <View
         style={{
           padding: 15,
