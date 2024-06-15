@@ -7,7 +7,6 @@ export default function About({ business }) {
       style={{
         padding: 20,
         backgroundColor: "#fff",
-        height: "100%",
       }}
     >
       <Text

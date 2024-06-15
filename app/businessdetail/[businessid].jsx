@@ -8,6 +8,7 @@ import { Colors } from "../../constants/Colors";
 import Intro from "../../components/BusinessDetail/Intro";
 import ActionButton from "../../components/BusinessDetail/ActionButton";
 import About from "../../components/BusinessDetail/About";
+import Reviews from "../../components/BusinessDetail/Reviews";
 
 export default function BusinessDetail() {
   const { businessid } = useLocalSearchParams();
@@ -46,6 +47,8 @@ export default function BusinessDetail() {
           <ActionButton business={business} />
           {/* About Section */}
           <About business={business} />
+          {/* Review Section */}
+          <Reviews />
         </View>
       )}
     </ScrollView>
