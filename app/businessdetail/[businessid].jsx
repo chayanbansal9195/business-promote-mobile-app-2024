@@ -1,9 +1,13 @@
-import { View, Text } from "react-native";
+import { ScrollView, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useLocalSearchParams } from "expo-router";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../configs/FirbaseConfig";
-import { ActivityIndicator } from "react-native-web";
+import { ActivityIndicator } from "react-native";
+import { Colors } from "../../constants/Colors";
+import Intro from "../../components/BusinessDetail/Intro";
+import ActionButton from "../../components/BusinessDetail/ActionButton";
+import About from "../../components/BusinessDetail/About";
 
 export default function BusinessDetail() {
   const { businessid } = useLocalSearchParams();
@@ -25,7 +29,7 @@ export default function BusinessDetail() {
     }
   };
   return (
-    <View>
+    <ScrollView>
       {loading ? (
         <ActivityIndicator
           style={{
@@ -35,8 +39,15 @@ export default function BusinessDetail() {
           color={Colors.PRIMARY}
         />
       ) : (
-        <View></View>
+        <View>
+          {/* Intro */}
+          <Intro business={business} />
+          {/* Action buttons */}
+          <ActionButton business={business} />
+          {/* About Section */}
+          <About business={business} />
+        </View>
       )}
-    </View>
+    </ScrollView>
   );
 }
