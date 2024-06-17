@@ -23,14 +23,14 @@ export default function BusinessDetail() {
 
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-      setBusiness(docSnap.data());
+      setBusiness({ id: docSnap.id, ...docSnap.data() });
       setloading(false);
     } else {
       console.log("No such document");
     }
   };
   return (
-    <ScrollView>
+    <ScrollView on>
       {loading ? (
         <ActivityIndicator
           style={{
@@ -48,7 +48,7 @@ export default function BusinessDetail() {
           {/* About Section */}
           <About business={business} />
           {/* Review Section */}
-          <Reviews />
+          <Reviews business={business}/>
         </View>
       )}
     </ScrollView>
