@@ -8,7 +8,7 @@ import {
   ActivityIndicator,
 } from "react-native";
 import React, { useEffect, useState } from "react";
-import { useNavigation } from "expo-router";
+import { useNavigation, useRouter } from "expo-router";
 import { Colors } from "../../constants/Colors";
 import * as ImagePicker from "expo-image-picker";
 import RNPickerSelect from "react-native-picker-select";
@@ -19,15 +19,18 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useUser } from "@clerk/clerk-expo";
 
 export default function AddBusiness() {
+  const router = useRouter();
   const navigation = useNavigation();
-  const [image, setImage] = useState();
+  const [image, setImage] = useState(
+    "https://vero-asean.com/wp-content/uploads/2024/04/insight-banner-default.jpg"
+  );
   const [categoryList, setCategoryList] = useState([]);
-  const [name, setName] = useState();
-  const [address, setAddress] = useState();
-  const [contact, setContact] = useState();
-  const [website, setWebsite] = useState();
-  const [about, setAbout] = useState();
-  const [category, setCategory] = useState();
+  const [name, setName] = useState("Business Name");
+  const [address, setAddress] = useState("Some Address required");
+  const [contact, setContact] = useState("1234567890");
+  const [website, setWebsite] = useState("http://www.facebook.com");
+  const [about, setAbout] = useState("Some Description");
+  const [category, setCategory] = useState("Shopping");
   const { user } = useUser();
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -90,6 +93,7 @@ export default function AddBusiness() {
     });
     setLoading(false);
     ToastAndroid.show("New Business Added", ToastAndroid.LONG);
+    router.push("/business/my-business");
   };
   return (
     <View

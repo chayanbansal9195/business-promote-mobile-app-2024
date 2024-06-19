@@ -1,4 +1,4 @@
-app link -
+app link - https://expo.dev/artifacts/eas/vDK7Pf2PUHnQAejS4xYVUn.apk
 
 1. react native
 2. expo setup

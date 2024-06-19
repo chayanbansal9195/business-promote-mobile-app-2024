@@ -102,6 +102,7 @@ export default function Reviews({ business }) {
               borderRadius:15,
               marginTop:10
             }}
+            key={index}
           >
             <Image
               source={{ uri: item?.userImage }}

@@ -19,6 +19,7 @@ const TabLayout = () => {
           tabBarIcon: ({ color }) => (
             <Ionicons name="home" size={24} color={color} />
           ),
+          unmountOnBlur:true
         }}
       />
       <Tabs.Screen

@@ -7,16 +7,19 @@ import PopularBusinessCard from "./PopularBusinessCard";
 
 export default function PopularBusiness() {
   const [businessList, setBusinessList] = useState([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     GetBusinessList();
   }, []);
   const GetBusinessList = async () => {
+    setLoading(true);
     setBusinessList([]);
     const q = query(collection(db, "BusinessList"), limit(10));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
       setBusinessList((prev) => [...prev, { id: doc.id, ...doc.data() }]);
     });
+    setLoading(false);
   };
   return (
     <View>
@@ -47,6 +50,8 @@ export default function PopularBusiness() {
         </Text>
       </View>
       <FlatList
+        onRefresh={GetBusinessList}
+        refreshing={loading}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         data={businessList}
